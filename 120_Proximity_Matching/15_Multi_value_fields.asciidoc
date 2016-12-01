@@ -62,12 +62,11 @@ PUT /my_index/_mapping/groups <2>
 <1> 首先删除映射 `groups` 以及这个类型内的所有文档。
 <2> 然后创建一个有正确值的新的映射 `groups` 。
 
-`position_increment_gap` 设置告诉Elasticsearch应该增加数组中的每个新元素的当前词条 `position` 的指定值。 所以现在当我们再索引names数组时，会产生如下的结果：
+`position_increment_gap` 设置告诉 Elasticsearch 应该为数组中每个新元素增加当前词条 `position` 的指定值。 所以现在当我们再索引 names 数组时，会产生如下的结果：
 
 * Position 1: `john`
 * Position 2: `abraham`
 * Position 103: `lincoln`
 * Position 104: `smith`
 
-现在我们的短语查询可能无法匹配匹配该文档因为 `abraham` 和 `lincoln` 之间的距离为 100 。 为了匹配这个文档你可能不得不增加值为 100 的 `slop`。
-
+现在我们的短语查询可能无法匹配该文档因为 `abraham` 和 `lincoln` 之间的距离为 100 。 为了匹配这个文档你必须添加值为 100 的 `slop` 。
